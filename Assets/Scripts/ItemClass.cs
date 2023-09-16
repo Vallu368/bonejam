@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "new Item")]
-public class Item : ScriptableObject
+public class ItemClass : ScriptableObject
 {
     public string Itemname;
-    public int durability;
+    public int maxDurability;
     public ItemSlot itemSlot;
+    public Sprite itemSprite;
     public enum ItemSlot
     {
         slot1,

@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     }
     private void Update()
     {
+
         if (Input.GetKeyDown(openInventoryButton))  
         {
             if (inventoryHolder != null) //tulee debuggi jos scenessä eioo invu holderia
@@ -39,5 +40,16 @@ public class Inventory : MonoBehaviour
             Debug.Log("opened inv");
         }
 
+    }
+
+    public void AddItemToInventory(GameObject item)
+    {
+        string slotForItem = item.GetComponent<Item>().itemSlot.ToString();
+        Debug.Log(slotForItem);
+
+        if (slotForItem == "slot1")
+        {
+
+        }
     }
 }
