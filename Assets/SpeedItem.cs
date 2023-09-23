@@ -16,7 +16,7 @@ public class SpeedItem : MonoBehaviour
             PlayerController player = collision.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.ApplySpeedBoost(speedBoostAmount, duration);
+              //  player.ApplySpeedBoost(speedBoostAmount, duration);
             }
 
             Destroy(gameObject);
