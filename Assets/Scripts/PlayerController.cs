@@ -11,21 +11,30 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 initialScale;
 
+    private bool controlsEnabled = false; // Start with controls disabled
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         initialScale = transform.localScale;
     }
 
+    public void EnableControls(bool controls)
+    {
+        controlsEnabled = controls;
+    }
+
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
-        rb.velocity = movement;
+        if (controlsEnabled)
+        {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector2 movement = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
+            rb.velocity = movement;
 
-        float newYScale = Mathf.Lerp(maxYScale, minYScale, Mathf.InverseLerp(-5f, 5f, transform.position.y));
-        float newXScale = Mathf.Lerp(maxYScale, minYScale, Mathf.InverseLerp(-5f, 5f, transform.position.y));
-        transform.localScale = new Vector3(newXScale, newYScale, initialScale.z);
+            float newYScale = Mathf.Lerp(maxYScale, minYScale, Mathf.InverseLerp(-5f, 5f, transform.position.y));
+            float newXScale = Mathf.Lerp(maxYScale, minYScale, Mathf.InverseLerp(-5f, 5f, transform.position.y));
+            transform.localScale = new Vector3(newXScale, newYScale, initialScale.z);
+        }
     }
 }
